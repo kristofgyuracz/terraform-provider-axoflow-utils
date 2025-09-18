@@ -50,7 +50,9 @@ func (r MergeFunction) Run(ctx context.Context, req function.RunRequest, resp *f
 
 	resp.Error = function.ConcatFuncErrors(req.Arguments.Get(ctx, &yaml1, &yaml2))
 
-	var map1, map2, result map[string]any
+	map1 := make(map[string]any)
+	map2 := make(map[string]any)
+	var result map[string]any
 
 	err := yaml.Unmarshal([]byte(yaml1), &map1)
 
